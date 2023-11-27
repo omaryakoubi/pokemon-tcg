@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Flex } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCards } from "./redux/actions/cardActions";
+
+import CardList from "./Components/CardList";
+import Pagination from "./Components/Pagination";
+import Layout from "./Layout";
 
 function App() {
+  const dispatch = useDispatch();
+  const { pokemonName } = useSelector((state) => state.pokemonCardReducer);
+  const { pokemonPage } = useSelector((state) => state.pokemonCardReducer);
+
+  useEffect(() => {
+    dispatch(fetchCards(pokemonName, pokemonPage));
+  }, [dispatch, pokemonPage, pokemonName]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Layout>
+        <Flex flexDir="column" alignItems="center">
+          <CardList />
+          <Pagination />
+        </Flex>
+      </Layout>
     </div>
   );
 }
