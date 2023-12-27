@@ -5,7 +5,7 @@ import { fetchCards } from "./redux/actions/cardActions";
 
 import CardList from "./Components/CardList";
 import Pagination from "./Components/Pagination";
-import Layout from "./Layout";
+import Layout from "./Components/Layout";
 
 function App() {
   const dispatch = useDispatch();

@@ -4,17 +4,17 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
-  DrawerOverlay
+  DrawerOverlay,
 } from "@chakra-ui/modal";
 
 import { Flex, Icon } from "@chakra-ui/react";
 import { BsCart4 } from "react-icons/bs";
 
-import Cart from "./Components/Cart";
-import Navbar from "./Components/Navbar";
+import Cart from "./Cart";
+import Navbar from "./Navbar";
 
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCart } from "./redux/actions/cartActions";
+import { toggleCart } from "../redux/actions/cartActions";
 
 const Layout = ({ children, searchName }) => {
   const dispatch = useDispatch();
